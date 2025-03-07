@@ -130,19 +130,11 @@ window.addEventListener("DOMContentLoaded", function () {
             focus: 'center',
             drag: "free",
             pagination: false,
+            arrows: false,
             perPage: 5,
             breakpoints: {
                 1024: {
-                    perPage: 3,
-    
-                },
-                767: {
-                    perPage: 2.5,
-    
-                },
-                420: {
-                    perPage: 2,
-    
+
                 },
             },
             autoScroll: {

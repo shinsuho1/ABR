@@ -10,7 +10,7 @@ include_once "../include/header.html";
         position: fixed;
         z-index: 100;
         pointer-events: none;
-        mix-blend-mode: difference;
+        /* mix-blend-mode: difference; */
 
         * {
             pointer-events: none;
@@ -27,10 +27,12 @@ include_once "../include/header.html";
         .normal {
             width: 30px;
             height: 30px;
-            background: var(--scv-green);
+            background-color: var(--scv-green);
             opacity: .5;
             border-radius: 50%;
-            mix-blend-mode: difference;
+            transition: .3s;
+            /* mix-blend-mode: difference; */
+            transform-origin: 50% 50%;
         }
 
         .view_more {
@@ -91,6 +93,13 @@ include_once "../include/header.html";
                     height: 100%;
                     object-fit: cover;
                 }
+            }
+        }
+
+        &.hover{
+            .normal{
+                background-color: var(--scv-blue);
+                transform: scale(1.3) translate(-50%,-50%);
             }
         }
 
@@ -297,7 +306,9 @@ include_once "../include/header.html";
 
                                 .splide__slider {
                                     width: 100%;
-
+                                    .splide__arrows {
+                                        /* display: none; */
+                                    }
                                     .splide__track {
                                         width: 100%;
                                         overflow: visible;

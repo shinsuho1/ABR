@@ -1,0 +1,27 @@
+#File block
+node_modules/
+.vscode/
+font/
+Font/
+dist/
+upload/
+*.log
+*.jpg
+*.jpeg
+*.png
+*.gif
+# *.mp4
+# *.mp3
+# *.avi
+# *.mov
+# *.wmv
+# *.flv
+# *.mkv
+*.webm
+ec_catalog/*.png
+ec_catalog/*.jpg
+*.sql
+eng/
+jpn/
+chn/
+esp/

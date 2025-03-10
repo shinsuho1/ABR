@@ -43,6 +43,11 @@ window.addEventListener("scroll", function () {
     if (header.classList.contains("hover") || header.classList.contains("on")) {
         return false;
     }
+    if(scrollTop > 0){
+        header.classList.add("white");
+    }else{
+        header.classList.contains("white") && header.classList.remove("white");
+    }
     if (varUA.indexOf("iphone") > -1 || varUA.indexOf("ipad") > -1 || varUA.indexOf("ipod") > -1 || varUA.indexOf("mac") > -1) {
         if (scrollTop == 0) {
             header.classList.add("active");

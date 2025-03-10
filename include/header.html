@@ -65,31 +65,31 @@ $mainClose = true;
                 </h1>
                 <ul id="gnb">
                     <li>
-                        <a href="https://adbatteryrecycle.com/ABOUT" target="_blank"><span>기업소개</span></a>
+                        <a href="https://adbatteryrecycle.com/ABOUT" title="기업소개" target="_blank"><span>기업소개</span></a>
                     </li>
                     <li>
-                        <a href="#none"><span>제품소개</span></a>
+                        <a href="javascript:alert('준비중');" title="제품소개"><span>제품소개</span></a>
                     </li>
                     <li>
-                        <a href="#none"><span>견적문의</span></a>
+                        <a href="javascript:alert('준비중');" title="견적문의"><span>견적문의</span></a>
                     </li>
                     <li>
-                        <a href="https://adbatteryrecycle.com/NEWS" target="_blank"><span>기업뉴스</span></a>
+                        <a href="https://adbatteryrecycle.com/NEWS" title="기업뉴스" target="_blank"><span>기업뉴스</span></a>
                     </li>
                     <li>
-                        <a href="#none"><span>FAQ</span></a>
+                        <a href="javascript:alert('준비중');" title="FAQ"><span>FAQ</span></a>
                     </li>
                 </ul>
                 <div class="header_right">
                     <ul>
-                        <li>
-                            <a href="#none"><i class="search"></i></a>
+                        <li class="search_button">
+                            <a href="javascript:alert('준비중');" title="상품 검색"><i class="search"></i></a>
                         </li>
                         <li>
-                            <a href="#none" target="_blank"><i class="in"></i></a>
+                            <a href="javascript:alert('준비중');" target="_blank" title="in"><i class="in"></i></a>
                         </li>
                         <li>
-                            <a href="#none" target="_blank"><i class="youtube"></i></a>
+                            <a href="javascript:alert('준비중');" target="_blank" title="Youtube"><i class="youtube"></i></a>
                         </li>
                     </ul>
                     <button id="menuicon" title="메뉴 열기">
@@ -101,28 +101,28 @@ $mainClose = true;
             </div>
         </nav>
     </header>
+    <div id="header_search">
+        <div class="search_wrap">
+            <div class="box">
+                <p class="title">Search</p>
+                <form>
+                    <input type="text" placeholder="검색어를 입력하세요." id="keyword">
+                    <label for="keyword"><input type="image" src="../../images/common/search_black.svg" alt=""></label>
+                </form>
+                <div module="Layout_SearchHeader">
+                    <div module="search_hotkeyword" class="keyword">
+                        <p>추천 검색어</p>
+                        <ul>
+                            <li><a href="{$hot_keyword_url}">{$hot_keyword_name}</a></li>
+                            <li><a href="{$hot_keyword_url}">{$hot_keyword_name}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close"><img src="../../images/common/close_search.svg" alt=""></button>
+        </div>
+    </div>
     <style>
-        :root {
-            --scv-green: #34B964;
-            --scv-blue: #003686;
-            --scv-light-green: #C8F492;
-
-            --scv-button-light-gray: #EFEFEF;
-            --scv-button-gray: #EDEDED;
-
-            --scv-bcakground-gray: #F8F8F8;
-
-            --scv-line-gray: #D9D9D9;
-
-            --scv-text-black: #333333;
-            --scv-text-dark: #1E1E1E;
-            --scv-text-light-gray: #AEAEAE;
-            --scv-text-medium-gray: #8A8A8A;
-            --scv-text-dark-gray: #555555;
-
-            --scv-inner-width: 1024px;
-        }
-
         header {
             width: 100%;
             padding: 0 40px;
@@ -183,7 +183,7 @@ $mainClose = true;
                                     line-height: 1;
                                     font-size: 18px;
                                     font-weight: 600;
-                                    transition: .5s;
+                                    /* transition: .5s; */
                                 }
 
                                 &[target="_blank"] {
@@ -197,7 +197,7 @@ $mainClose = true;
                                             background-position: center;
                                             background-repeat: no-repeat;
                                             background-size: cover;
-                                            transition: .5s;
+                                            /* transition: .5s; */
                                         }
                                     }
                                 }
@@ -210,6 +210,7 @@ $mainClose = true;
                         justify-content: center;
                         align-items: center;
                         gap: 30px;
+
                         ul {
                             display: flex;
                             justify-content: center;
@@ -261,6 +262,7 @@ $mainClose = true;
                             position: relative;
                             cursor: pointer;
                             display: none;
+
                             span {
                                 position: absolute;
                                 width: 100%;
@@ -277,7 +279,7 @@ $mainClose = true;
 
                                 &:nth-child(2) {
                                     top: 50%;
-                                    transform: translate(-50%,-50%);
+                                    transform: translate(-50%, -50%);
                                 }
 
                                 &:nth-child(3) {
@@ -357,14 +359,148 @@ $mainClose = true;
                                     }
                                 }
                             }
-                            #menuicon{
-                                span{
+
+                            #menuicon {
+                                span {
                                     background-color: var(--scv-green);
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+
+        #header_search {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 101;
+            background-color: rgba(0, 0, 0, .4);
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: .5s;
+
+            .search_wrap {
+                width: 100%;
+                padding: 60px 0 80px;
+                background-color: #Fff;
+                position: relative;
+                display: none;
+                /* overflow: visible !important; */
+
+                .box {
+                    width: 100%;
+                    max-width: 510px;
+                    margin: 0 auto;
+                    color: var(--scv-text-dark);
+
+                    .title {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 26px;
+                        font-weight: 600;
+                        margin-bottom: 40px;
+                    }
+
+                    form {
+                        margin-bottom: 30px;
+                        position: relative;
+                        #keyword {
+                            width: 100%;
+                            padding: 15px;
+                            background-color: #F5F5F5;
+                            font-size: 18px;
+                            font-weight: 400;
+                            line-height: 1;
+                            &::placeholder{
+                                font-size: inherit;
+                                font-weight: inherit;
+                                font-family: inherit;
+                                line-height: inherit;
+                                color: var(--scv-text-medium-gray);
+                            }
+                        }
+                        label{
+                            width: 18px;
+                            height: 18px;
+                            position: absolute;
+                            right: 15px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    .keyword {
+                        width: 100%;
+
+                        p {
+                            width: 100%;
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: 15px;
+                        }
+
+                        ul {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            flex-wrap: wrap;
+                            gap: 10px;
+
+                            li {
+                                a {
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    line-height: 1;
+                                    color: var(--scv-text-medium-gray);
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                    transition: .3s;
+                                    &::before{
+                                        content: "#";
+                                        display: inline-block;
+                                        font-size: inherit;
+                                        font-weight: inherit;
+                                        font-family: inherit;
+                                        line-height: inherit;
+                                        color: inherit;
+                                    }
+                                    &:hover{
+                                        color: var(--scv-text-dark);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .close {
+                    width: 60px;
+                    height: 60px;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: -30px;
+                    pointer-events: visible;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            &.active {
+                pointer-events: visible;
+                opacity: 1;
+                visibility: visible;
             }
         }
     </style>
